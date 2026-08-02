@@ -3,10 +3,8 @@ import * as core from "@actions/core";
 import EventPoster from "./event-poster.ts";
 import Event from "./model/event.ts";
 
-const credentialsJson = core.getInput("credentialsJson");
-core.info(
-  `Credentials JSON: ${Object.keys(JSON.parse(credentialsJson)).join(", ")}`,
-);
+const credentialsJson = JSON.parse(core.getInput("credentialsJson"));
+
 const message = core.getInput("message");
 const component = core.getInput("component")
   ? core.getInput("component")
