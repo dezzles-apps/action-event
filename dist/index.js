@@ -44149,6 +44149,7 @@ let Event$1 = class Event {
 };
 
 const credentialsJson = getInput("credentialsJson");
+info(`Credentials JSON: ${Object.keys(JSON.parse(credentialsJson)).join(", ")}`);
 const message = getInput("message");
 const component = getInput("component")
     ? getInput("component")
