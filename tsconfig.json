@@ -2,19 +2,20 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
+    "allowImportingTsExtensions": true,
+    "noEmit": true,
     "declaration": false,
     "declarationMap": false,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
     "lib": ["ES2022"],
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
     "newLine": "lf",
     "noImplicitAny": true,
     "noUnusedLocals": true,
     "noUnusedParameters": false,
-    "outDir": "./dist",
     "pretty": true,
     "resolveJsonModule": true,
     "strict": true,
@@ -22,5 +23,18 @@
     "target": "ES2022"
   },
   "exclude": ["__fixtures__", "__tests__", "coverage", "dist", "node_modules"],
-  "include": ["src"]
+  "include": [
+    "src",
+    "actions/event/model",
+    "actions/event/event-poster.ts",
+    "actions/event/index.ts",
+    "actions/event/test.ts",
+    "actions/publish",
+    "actions/publish/model",
+    "actions/publish/publish-poster.ts",
+    "actions/publish/index.ts",
+    "actions/publish/test.ts",
+    "actions/common",
+    "actions/common/client.ts"
+  ]
 }

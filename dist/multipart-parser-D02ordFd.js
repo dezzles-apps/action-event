@@ -1,11 +1,11 @@
-import { FormData, File } from './index-CTSzYJel.js';
+import { FormData, File } from './index-DgRizvHv.js';
 import 'node:http';
 import 'node:https';
 import 'node:zlib';
 import 'node:stream';
 import 'node:buffer';
 import 'node:util';
-import './index.js';
+import './client-BNBqSQZh.js';
 import 'os';
 import 'crypto';
 import 'fs';
@@ -471,4 +471,4 @@ async function toFormData(Body, ct) {
 }
 
 export { toFormData };
-//# sourceMappingURL=multipart-parser-DUxy8aYg.js.map
+//# sourceMappingURL=multipart-parser-D02ordFd.js.map

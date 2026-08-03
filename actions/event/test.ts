@@ -1,15 +1,16 @@
 import EventPoster from "./event-poster.ts";
 import Event from "./model/event.ts";
+import Client from "../common/client.ts";
 import { readFileSync } from "fs";
 import { homedir } from "os";
 import { join } from "path";
 
-const credentialsPath = join(homedir(), "");
-const credentialsJson = JSON.parse(readFileSync(credentialsPath, "utf-8"));
-const poster = new EventPoster(credentialsJson);
-console.log("EventPoster initialized with credentials");
-await poster.init();
-console.log("EventPoster initialized with token:");
+const client = new Client(
+  JSON.parse(readFileSync(join(homedir(), "alltheskins-sa.json"), "utf-8")),
+);
+await client.init();
+const poster = new EventPoster(client.getClient());
+console.log("EventPoster initialized with client");
 const event = new Event(
   "my-org",
   "my-repo",

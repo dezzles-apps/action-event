@@ -2,7 +2,7 @@ import * as core from "@actions/core";
 
 import EventPoster from "./event-poster.ts";
 import Event from "./model/event.ts";
-
+import Client from "../common/client.ts";
 const credentialsJson = JSON.parse(core.getInput("credentialsJson"));
 
 const message = core.getInput("message");
@@ -32,10 +32,11 @@ core.info(`Posting event with the following:
 
 async function run() {
   try {
-    const post = new EventPoster(credentialsJson);
-    core.info("Initialising EventPoster");
-    await post.init();
-    core.info("EventPoster initialised");
+    const client = new Client(credentialsJson);
+    core.info("Initialising Client");
+    await client.init();
+    core.info("Client initialised");
+    const post = new EventPoster(client.getClient());
     await post.postEvent(event);
   } catch (error) {
     core.setFailed(`Action failed with error: ${error}`);

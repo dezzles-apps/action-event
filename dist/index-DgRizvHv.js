@@ -4,7 +4,7 @@ import zlib from 'node:zlib';
 import Stream, { PassThrough, pipeline as pipeline$1 } from 'node:stream';
 import { Buffer as Buffer$1 } from 'node:buffer';
 import { types, deprecate, promisify } from 'node:util';
-import { c as commonjsGlobal } from './index.js';
+import { c as commonjsGlobal } from './client-BNBqSQZh.js';
 import { format } from 'node:url';
 import { isIP } from 'node:net';
 import { promises } from 'node:fs';
@@ -5462,7 +5462,7 @@ class Body {
 			return formData;
 		}
 
-		const {toFormData} = await import('./multipart-parser-DUxy8aYg.js');
+		const {toFormData} = await import('./multipart-parser-D02ordFd.js');
 		return toFormData(this.body, ct);
 	}
 
@@ -7253,4 +7253,4 @@ function fixResponseChunkedTransferBadEnding(request, errorCallback) {
 }
 
 export { AbortError, Blob, FetchError, File, FormData, Headers, Request, Response, fetch as default, isRedirect };
-//# sourceMappingURL=index-CTSzYJel.js.map
+//# sourceMappingURL=index-DgRizvHv.js.map

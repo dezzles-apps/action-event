@@ -5,7 +5,10 @@ import nodeResolve from "@rollup/plugin-node-resolve";
 import typescript from "@rollup/plugin-typescript";
 import json from "@rollup/plugin-json";
 const config = {
-  input: "src/index.ts",
+  input: {
+    event: "actions/event/index.ts",
+    publish: "actions/publish/index.ts",
+  },
   output: {
     esModule: true,
     dir: "dist/",

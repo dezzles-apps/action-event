@@ -1,6 +1,6 @@
 import { GoogleAuth, IdTokenClient } from "google-auth-library";
-import Event from "./model/event.ts";
-export class EventPoster {
+
+export class Client {
   credentialsJson: string;
   auth: GoogleAuth;
   client: IdTokenClient = null as any;
@@ -15,16 +15,9 @@ export class EventPoster {
     this.client = await this.auth.getIdTokenClient("build-engine");
   }
 
-  async postEvent(event: Event) {
-    await this.client.fetch({
-      url: `${this.url}/api/v1/events`,
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(event),
-    });
+  getClient(): IdTokenClient {
+    return this.client;
   }
 }
 
-export default EventPoster;
+export default Client;

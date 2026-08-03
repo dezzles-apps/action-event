@@ -28545,7 +28545,7 @@ var scripts$1 = {
 	prelint: "cd samples; npm link ../; npm install",
 	clean: "gts clean"
 };
-var repository$2 = {
+var repository$1 = {
 	type: "git",
 	directory: "core/packages/gaxios",
 	url: "https://github.com/googleapis/google-cloud-node.git"
@@ -28620,7 +28620,7 @@ var require$$0$1 = {
 	files: files$1,
 	exports: exports$1,
 	scripts: scripts$1,
-	repository: repository$2,
+	repository: repository$1,
 	keywords: keywords$1,
 	engines: engines$1,
 	author: author$1,
@@ -29710,7 +29710,7 @@ function requireGaxios () {
 	        const hasWindow = typeof window !== 'undefined' && !!window;
 	        this.#fetch ||= hasWindow
 	            ? window.fetch
-	            : (await import('./index-CTSzYJel.js')).default;
+	            : (await import('./index-DgRizvHv.js')).default;
 	        return this.#fetch;
 	    }
 	    /**
@@ -35718,7 +35718,7 @@ var engines = {
 };
 var main = "./build/src/index.js";
 var types = "./build/src/index.d.ts";
-var repository$1 = {
+var repository = {
 	type: "git",
 	directory: "core/packages/google-auth-library-nodejs",
 	url: "https://github.com/googleapis/google-cloud-node.git"
@@ -35805,7 +35805,7 @@ var require$$0 = {
 	engines: engines,
 	main: main,
 	types: types,
-	repository: repository$1,
+	repository: repository,
 	keywords: keywords,
 	dependencies: dependencies,
 	devDependencies: devDependencies,
@@ -44105,7 +44105,7 @@ function requireSrc () {
 
 var srcExports = requireSrc();
 
-class EventPoster {
+class Client {
     credentialsJson;
     auth;
     client = null;
@@ -44119,65 +44119,10 @@ class EventPoster {
     async init() {
         this.client = await this.auth.getIdTokenClient("build-engine");
     }
-    async postEvent(event) {
-        await this.client.fetch({
-            url: `${this.url}/api/v1/events`,
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(event),
-        });
+    getClient() {
+        return this.client;
     }
 }
 
-let Event$1 = class Event {
-    organisation;
-    repository;
-    buildNumber;
-    message;
-    ref;
-    component;
-    constructor(organisation, repository, buildNumber, message, ref, component) {
-        this.organisation = organisation;
-        this.repository = repository;
-        this.buildNumber = buildNumber;
-        this.message = message;
-        this.ref = ref;
-        this.component = component ? component : "default";
-    }
-};
-
-const credentialsJson = JSON.parse(getInput("credentialsJson"));
-const message = getInput("message");
-const component = getInput("component")
-    ? getInput("component")
-    : "default";
-const ref = process.env.GITHUB_REF_NAME;
-const repository = process.env.GITHUB_REPOSITORY;
-const runId = process.env.GITHUB_RUN_NUMBER;
-const event = new Event$1(repository?.split("/")[0] ?? "", repository?.split("/")[1] ?? "", parseInt(runId ?? "0"), message, ref ?? "", component);
-info(`Posting event with the following:
-  organisation: ${event.organisation}
-  repository: ${event.repository}
-  buildNumber: ${event.buildNumber}
-  message: ${event.message}
-  ref: ${event.ref}
-  component: ${event.component}
-`);
-async function run() {
-    try {
-        const post = new EventPoster(credentialsJson);
-        info("Initialising EventPoster");
-        await post.init();
-        info("EventPoster initialised");
-        await post.postEvent(event);
-    }
-    catch (error) {
-        setFailed(`Action failed with error: ${error}`);
-    }
-}
-run();
-
-export { commonjsGlobal as c };
-//# sourceMappingURL=index.js.map
+export { Client as C, commonjsGlobal as c, getInput as g, info as i, setFailed as s };
+//# sourceMappingURL=client-BNBqSQZh.js.map
