@@ -4,12 +4,10 @@ inputs:
   credentialsJson:
     description: The credentials JSON for Build Engine
     required: true
-  message:
-    description: The message to post
+  version:
+    description: The version to publish
     required: true
-  component:
-    description: The component to post
-    required: false
+
 runs:
   using: node24
   main: ../../dist/publish.js
