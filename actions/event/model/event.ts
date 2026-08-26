@@ -2,6 +2,7 @@ class Event {
   organisation: string;
   repository: string;
   buildNumber: number;
+  buildId: string;
   message: string;
   ref: string;
   component: string;
@@ -10,6 +11,7 @@ class Event {
     organisation: string,
     repository: string,
     buildNumber: number,
+    buildId: string,
     message: string,
     ref: string,
     component?: string,
@@ -17,6 +19,7 @@ class Event {
     this.organisation = organisation;
     this.repository = repository;
     this.buildNumber = buildNumber;
+    this.buildId = buildId;
     this.message = message;
     this.ref = ref;
     this.component = component ? component : "default";

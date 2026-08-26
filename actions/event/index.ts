@@ -11,12 +11,14 @@ const component = core.getInput("component")
   : "default";
 const ref = process.env.GITHUB_REF_NAME;
 const repository = process.env.GITHUB_REPOSITORY;
-const runId = process.env.GITHUB_RUN_NUMBER;
+const runId = process.env.GITHUB_RUN_ID;
+const runNumber = process.env.GITHUB_RUN_NUMBER;
 
 const event = new Event(
   repository?.split("/")[0] ?? "",
   repository?.split("/")[1] ?? "",
-  parseInt(runId ?? "0"),
+  parseInt(runNumber ?? "0"),
+  runId,
   message,
   ref ?? "",
   component,
@@ -25,6 +27,7 @@ core.info(`Posting event with the following:
   organisation: ${event.organisation}
   repository: ${event.repository}
   buildNumber: ${event.buildNumber}
+  buildId: ${event.buildId}
   message: ${event.message}
   ref: ${event.ref}
   component: ${event.component}

@@ -65,13 +65,15 @@ class Event {
     organisation;
     repository;
     buildNumber;
+    buildId;
     message;
     ref;
     component;
-    constructor(organisation, repository, buildNumber, message, ref, component) {
+    constructor(organisation, repository, buildNumber, buildId, message, ref, component) {
         this.organisation = organisation;
         this.repository = repository;
         this.buildNumber = buildNumber;
+        this.buildId = buildId;
         this.message = message;
         this.ref = ref;
         this.component = component ? component : "default";
@@ -85,12 +87,14 @@ const component = getInput("component")
     : "default";
 const ref = process.env.GITHUB_REF_NAME;
 const repository = process.env.GITHUB_REPOSITORY;
-const runId = process.env.GITHUB_RUN_NUMBER;
-const event = new Event(repository?.split("/")[0] ?? "", repository?.split("/")[1] ?? "", parseInt(runId ?? "0"), message, ref ?? "", component);
+const runId = process.env.GITHUB_RUN_ID;
+const runNumber = process.env.GITHUB_RUN_NUMBER;
+const event = new Event(repository?.split("/")[0] ?? "", repository?.split("/")[1] ?? "", parseInt(runNumber ?? "0"), runId, message, ref ?? "", component);
 info(`Posting event with the following:
   organisation: ${event.organisation}
   repository: ${event.repository}
   buildNumber: ${event.buildNumber}
+  buildId: ${event.buildId}
   message: ${event.message}
   ref: ${event.ref}
   component: ${event.component}
