@@ -2,6 +2,7 @@ class Event {
   organisation: string;
   repository: string;
   buildNumber: number;
+  source: string;
   sourceBuildId: string;
   message: string;
   ref: string;
@@ -12,6 +13,7 @@ class Event {
     organisation: string,
     repository: string,
     buildNumber: number,
+    source: string,
     sourceBuildId: string,
     message: string,
     ref: string,
@@ -24,6 +26,7 @@ class Event {
     this.message = message;
     this.ref = ref;
     this.component = component ? component : "default";
+    this.source = 'github';
     this.buildUrl = `${process.env.GITHUB_SERVER_URL}/${process.env.GITHUB_REPOSITORY}/actions/runs/${process.env.GITHUB_RUN_ID}`;
   }
 }

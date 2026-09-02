@@ -11,7 +11,7 @@ const component = core.getInput("component")
   : "default";
 const ref = process.env.GITHUB_REF_NAME;
 const repository = process.env.GITHUB_REPOSITORY;
-const runId = `gh-${process.env.GITHUB_RUN_ID}`;
+const runId = `${process.env.GITHUB_RUN_ID}`;
 const runNumber = process.env.GITHUB_RUN_NUMBER;
 
 
@@ -28,7 +28,8 @@ core.info(`Posting event with the following:
   organisation: ${event.organisation}
   repository: ${event.repository}
   buildNumber: ${event.buildNumber}
-  buildId: ${event.buildId}
+  sourceBuildId: ${event.sourceBuildId}
+  source: ${event.source}
   message: ${event.message}
   ref: ${event.ref}
   component: ${event.component}
