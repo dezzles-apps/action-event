@@ -69,6 +69,7 @@ class Event {
     message;
     ref;
     component;
+    buildUrl;
     constructor(organisation, repository, buildNumber, buildId, message, ref, component) {
         this.organisation = organisation;
         this.repository = repository;
@@ -77,6 +78,7 @@ class Event {
         this.message = message;
         this.ref = ref;
         this.component = component ? component : "default";
+        this.buildUrl = `${process.env.GITHUB_SERVER_URL}/${process.env.GITHUB_REPOSITORY}/actions/runs/${process.env.GITHUB_RUN_ID}`;
     }
 }
 
@@ -87,7 +89,7 @@ const component = getInput("component")
     : "default";
 const ref = process.env.GITHUB_REF_NAME;
 const repository = process.env.GITHUB_REPOSITORY;
-const runId = process.env.GITHUB_RUN_ID;
+const runId = `gh-${process.env.GITHUB_RUN_ID}`;
 const runNumber = process.env.GITHUB_RUN_NUMBER;
 const event = new Event(repository?.split("/")[0] ?? "", repository?.split("/")[1] ?? "", parseInt(runNumber ?? "0"), runId, message, ref ?? "", component);
 info(`Posting event with the following:

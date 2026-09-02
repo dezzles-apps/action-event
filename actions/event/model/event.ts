@@ -6,6 +6,7 @@ class Event {
   message: string;
   ref: string;
   component: string;
+  buildUrl: string;
 
   constructor(
     organisation: string,
@@ -23,6 +24,7 @@ class Event {
     this.message = message;
     this.ref = ref;
     this.component = component ? component : "default";
+    this.buildUrl = `${process.env.GITHUB_SERVER_URL}/${process.env.GITHUB_REPOSITORY}/actions/runs/${process.env.GITHUB_RUN_ID}`;
   }
 }
 
