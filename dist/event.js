@@ -65,16 +65,16 @@ class Event {
     organisation;
     repository;
     buildNumber;
-    buildId;
+    sourceBuildId;
     message;
     ref;
     component;
     buildUrl;
-    constructor(organisation, repository, buildNumber, buildId, message, ref, component) {
+    constructor(organisation, repository, buildNumber, sourceBuildId, message, ref, component) {
         this.organisation = organisation;
         this.repository = repository;
         this.buildNumber = buildNumber;
-        this.buildId = buildId;
+        this.sourceBuildId = sourceBuildId;
         this.message = message;
         this.ref = ref;
         this.component = component ? component : "default";
