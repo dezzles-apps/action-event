@@ -28,7 +28,7 @@ core.info(`Posting event with the following:
   organisation: ${event.organisation}
   repository: ${event.repository}
   buildNumber: ${event.buildNumber}
-  buildId: ${event.buildId}
+  buildId: ${event.sourceBuildId}
   message: ${event.message}
   ref: ${event.ref}
   component: ${event.component}
