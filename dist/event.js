@@ -71,7 +71,7 @@ class Event {
     ref;
     component;
     buildUrl;
-    constructor(organisation, repository, buildNumber, source, sourceBuildId, message, ref, component) {
+    constructor(organisation, repository, buildNumber, sourceBuildId, message, ref, component) {
         this.organisation = organisation;
         this.repository = repository;
         this.buildNumber = buildNumber;

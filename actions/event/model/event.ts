@@ -13,7 +13,6 @@ class Event {
     organisation: string,
     repository: string,
     buildNumber: number,
-    source: string,
     sourceBuildId: string,
     message: string,
     ref: string,
